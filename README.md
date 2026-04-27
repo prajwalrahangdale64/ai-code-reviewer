@@ -14,13 +14,13 @@ ai-code-reviewer/
 
 ## Project Flow
 
-1) User input
+1) User input:
   The app accepts code in three ways: pasted code, uploaded file, or GitHub PR URL through the Streamlit interface.
-2) GitHub PR support
+2) GitHub PR support:
   When a PR URL is provided, the system retrieves all changed files from the pull request, extracts their full code content, and consolidates them into a single input for end-to-end review.
-3) LLM-based review
+3) LLM-based review:
   The combined code is passed through a LangChain pipeline using ChatGroq, with a strict structured output schema (Pydantic). The input is line-numbered to ensure precise referencing. The model returns granular, line-specific issues with category, severity, exact problematic code, and concrete corrected replacements—along with an overall quality score and high-level improvement suggestions.
-4) Review output display
+4) Review output display:
 The Streamlit interface presents the generated review in a structured format, including the overall score, detailed issue breakdowns, before/after fixes, and general recommendations.
 
 ## UI Preview
