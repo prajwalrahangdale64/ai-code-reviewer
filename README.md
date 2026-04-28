@@ -58,3 +58,25 @@ ai-code-reviewer/
   <img width="1366" height="409" alt="Screenshot (587)" src="https://github.com/user-attachments/assets/faee5490-8b55-40a5-b84a-6e1946384825" />
 
 ---
+
+## Error dump file structure:
+
+```
+{
+  "overall_score": 6,
+  "issues": [
+    {
+      "category": "readability",
+      "message": "The function 'runner' is not documented.",
+      "severity": "low",
+      "line_numbers": [36],
+      "original_code": "@pytest.fixture\ndef runner():",
+      "correction": "@pytest.fixture\ndef runner():\n    \"\"\"Fixture that ...\"\"\""
+    }
+  ],
+  "suggestions": [
+    "Consider adding more test cases to cover different scenarios.",
+    "Consider using a linter to enforce coding standards."
+  ]
+}
+```
