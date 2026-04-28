@@ -6,7 +6,9 @@ ai-code-reviewer/
 │   └── ui.py              # Streamlit UI
 ├── core/
 │   ├── llm.py             # LLM-based code review logic
-│   └── github_fetcher.py  # GitHub PR code fetcher
+│   ├── github_fetcher.py  # GitHub PR code fetcher
+│   ├── storage.py         # Saves review outputs (error dumps)
+│   └── error_dumps/       # Stored JSON review results
 ├── main.py                # App entry point
 ├── requirements.txt       # Python dependencies
 └── .env                   # Local API keys (not committed)
@@ -17,40 +19,42 @@ ai-code-reviewer/
 1) User input:
   The app accepts code in three ways: pasted code, uploaded file, or GitHub PR URL through the Streamlit interface.
 2) GitHub PR support:
-  When a PR URL is provided, the system retrieves all changed files from the pull request, extracts their full code content, and consolidates them into a single input for end-to-end review.
-3) LLM-based review:
+  When a PR URL is provided, the system retrieves PR metadata, shows the changed files in a folder-tree view, and lets the user select a specific file for review.
+4) LLM-based review:
   The combined code is passed through a LangChain pipeline using ChatGroq, with a strict structured output schema (Pydantic). The input is line-numbered to ensure precise referencing. The model returns granular, line-specific issues with category, severity, exact problematic code, and concrete corrected replacements—along with an overall quality score and high-level improvement suggestions.
-4) Review output display:
-The Streamlit interface presents the generated review in a structured format, including the overall score, detailed issue breakdowns, before/after fixes, and general recommendations.
+5) Error dump storage:
+  After each review, the result is saved locally as a timestamped JSON file in an `error_dumps/` folder for later inspection or debugging.
+7) Review output display:
+  The Streamlit interface presents the generated review in a structured format, including the overall score, detailed issue breakdowns, before/after fixes, and general recommendations.
 
 ## UI Preview
 
 ### Screenshot 1:
 
-  <img width="1366" height="550" alt="Screenshot (540)" src="https://github.com/user-attachments/assets/683bc910-8a9d-48ca-9713-2d6fb6295cdd" />
-
+  <img width="1366" height="559" alt="Screenshot (583)" src="https://github.com/user-attachments/assets/39d2a619-eabb-47b9-b318-2792856c7150" />
+  
 ---
 
 ### Screenshot 2:
 
-  <img width="1366" height="611" alt="Screenshot (541)" src="https://github.com/user-attachments/assets/21c71175-9e8d-4d9e-b548-91c999abc4b5" />
+  <img width="1366" height="226" alt="Screenshot (584)" src="https://github.com/user-attachments/assets/bf96152a-c329-48cf-a65b-1185b69ef8b4" />
 
 ---
 
 ### Screenshot 3:
 
-  <img width="1366" height="459" alt="Screenshot (542)" src="https://github.com/user-attachments/assets/df8ef8b2-4c50-4cde-86a5-60cdd3754667" />
+  <img width="1366" height="562" alt="Screenshot (585)" src="https://github.com/user-attachments/assets/4f616a87-d8d2-4015-9c6e-3d9e8ef01dc7" />
 
 ---
 
 ### Screenshot 4:
 
-  <img width="1366" height="562" alt="Screenshot (543)" src="https://github.com/user-attachments/assets/dda02ddc-ed2b-44f4-9cdd-98aabb9c53f1" />
+  <img width="1366" height="537" alt="Screenshot (586)" src="https://github.com/user-attachments/assets/3c77a3ea-4571-436c-b70e-570ee79a8955" />
 
 ---
 
 ### Screenshot 5:
 
-  <img width="1366" height="295" alt="Screenshot (544)" src="https://github.com/user-attachments/assets/2ea220b9-7d3a-45ac-a10b-8462845e8c96" />
+  <img width="1366" height="409" alt="Screenshot (587)" src="https://github.com/user-attachments/assets/faee5490-8b55-40a5-b84a-6e1946384825" />
 
 ---
