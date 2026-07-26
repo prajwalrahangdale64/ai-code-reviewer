@@ -1,0 +1,11 @@
+# Environment variables
+.env
+
+# Generated review outputs
+error_dumps/
+
+# Python cache
+__pycache__/
+
+# VS Code
+.vscode/
