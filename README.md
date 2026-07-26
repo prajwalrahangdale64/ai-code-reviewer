@@ -1,14 +1,14 @@
 ## Project Structure
 
-```
+```text
 ai-code-reviewer/
 ├── app/
 │   └── ui.py              # Streamlit UI
 ├── core/
 │   ├── llm.py             # LLM-based code review logic
 │   ├── github_fetcher.py  # GitHub PR code fetcher
-│   ├── storage.py         # Saves review outputs (error dumps)
-│   └── error_dumps/       # Stored JSON review results
+│   └── storage.py         # Saves review outputs (error dumps)
+├── error_dumps/           # Stored JSON review results (generated at runtime)
 ├── main.py                # App entry point
 ├── requirements.txt       # Python dependencies
 └── .env                   # Local API keys (not committed)
