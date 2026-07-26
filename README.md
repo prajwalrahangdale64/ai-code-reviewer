@@ -8,10 +8,10 @@ ai-code-reviewer/
 │   ├── llm.py             # LLM-based code review logic
 │   ├── github_fetcher.py  # GitHub PR code fetcher
 │   └── storage.py         # Saves review outputs (error dumps)
-├── error_dumps/           # Stored JSON review results (generated at runtime)
+├── error_dumps/           # Stored JSON review results (generated at runtime, gitignored)
 ├── main.py                # App entry point
 ├── requirements.txt       # Python dependencies
-└── .env                   # Local API keys (not committed)
+└── .env                   # Local API keys (gitignored)
 ```
 
 ## Project Flow
